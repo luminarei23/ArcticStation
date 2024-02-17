@@ -1,3 +1,0 @@
-/home/luminarei/projects/ArcticStation/build/pioasm/CMakeFiles/pioasm.dir
-/home/luminarei/projects/ArcticStation/build/pioasm/CMakeFiles/edit_cache.dir
-/home/luminarei/projects/ArcticStation/build/pioasm/CMakeFiles/rebuild_cache.dir
