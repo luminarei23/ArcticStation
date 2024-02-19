@@ -9,13 +9,22 @@ project(ArcticStation)
 # initialize the Raspberry Pi Pico SDK
 pico_sdk_init()
 
+# Include directories
+include_directories(source/types source/sensors)
+
+set(SOURCES 
+source/ArcticStation.cpp
+source/sensors/PMS7003.cpp
+source/types/StreamWrapper.cpp
+)
+
 # Executables goes there
-add_executable(main
-    source/main.c
+add_executable(ArcticStation
+    ${SOURCES}
 )
 
 # Add pico_stdlib library which aggregates commonly used features
-target_link_libraries(main pico_stdlib)
+target_link_libraries(ArcticStation pico_stdlib pico_cyw43_arch_none)
 
 # create map/bin/hex/uf2 file in addition to ELF.
-pico_add_extra_outputs(main)
+pico_add_extra_outputs(ArcticStation)
