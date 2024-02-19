@@ -10,12 +10,14 @@ project(ArcticStation)
 pico_sdk_init()
 
 # Include directories
-include_directories(source/include)
+include_directories(source/types source/sensors)
 
 set(SOURCES 
 source/ArcticStation.cpp
 source/sensors/PMS7003.cpp
+source/types/StreamWrapper.cpp
 )
+
 # Executables goes there
 add_executable(ArcticStation
     ${SOURCES}

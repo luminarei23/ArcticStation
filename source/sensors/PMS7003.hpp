@@ -1,20 +1,20 @@
 /*********************************************************************
-An Arduino library for interfacing with the Plantower PMS7003 laser
+An C++ library for interfacing with the Plantower PMS7003 laser
 particle counter. This should also work the the PMS5003 sensor,
 as they share the same protocol.
-
-For more information about the PMS7003, see README.md.
-
-Written by Jason Striegel.
-BSD license. See license.txt for details.
 **********************************************************************/
 
 #ifndef _PMS7003_HPP_
 #define _PMS7003_HPP_
 
 #include <stdint.h>
-#include "pico/stdlib.h"
+
+#include "StreamWrapper.hpp"
+
 #include "hardware/uart.h"
+
+#include "pico/cyw43_arch.h"
+#include "pico/stdlib.h"
 
 #define PMS7003_DATA_SIZE 32 // 0x42 + 0x4d  + 28 bytes data + 2 bytes checksum = 32 bytes
 

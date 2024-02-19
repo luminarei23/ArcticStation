@@ -1,16 +1,10 @@
 /*********************************************************************
-An Arduino library for interfacing with the Plantower PMS7003 laser
+An C++ library for interfacing with the Plantower PMS7003 laser
 particle counter. This should also work the the PMS5003 sensor,
 as they share the same protocol.
-
-For more information about the PMS7003, see README.md.
-
-Written by Jason Striegel.
-BSD license. See license.txt for details.
 **********************************************************************/
 
 #include "PMS7003.hpp"
-#include "StreamWrapper.hpp"
 
 Plantower_PMS7003::Plantower_PMS7003()
 {
@@ -21,7 +15,7 @@ Plantower_PMS7003::Plantower_PMS7003()
 
 void Plantower_PMS7003::init()
 {
-  stdio_uart_init();
+  serial->init(BAUD_RATE);
 }
 
 void Plantower_PMS7003::init(Stream *s)
@@ -38,11 +32,11 @@ void Plantower_PMS7003::updateFrame()
 {
   if (!initialized)
   {
-    Serial.println("Error: must call Plantower_PMS7003::init()");
+    printf("Error: must call Plantower_PMS7003::init()");
     return;
   }
   dataReady = false;
-  if (serial->available())
+  if (serial->isBusy())
   {
     nextByte = serial->read();
 
@@ -78,7 +72,7 @@ void Plantower_PMS7003::updateFrame()
       {
         if (debug)
         {
-          Serial.println("Invalid data checksum");
+          printf("Invalid data checksum");
         }
       }
     }
@@ -86,7 +80,7 @@ void Plantower_PMS7003::updateFrame()
     {
       if (debug)
       {
-        Serial.println("Malformed first byte");
+        printf("Malformed first byte");
       }
     }
     bufferIndex = 0;
@@ -161,10 +155,13 @@ void Plantower_PMS7003::dumpBytes()
 {
   for (int i = 0; i < PMS7003_DATA_SIZE; i++)
   {
-    Serial.print(sensorData.bytes[i]);
-    Serial.print(" ");
+    char buffer[2];
+    buffer[0] = sensorData.bytes[i];
+    buffer[1] = '\0'; // Null-terminate the string
+    printf(buffer);
+    printf(" ");
   }
-  Serial.println();
+  printf("\n");
 }
 
 // fix sensor data endianness
