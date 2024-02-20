@@ -15,7 +15,7 @@ include_directories(source/types source/sensors)
 set(SOURCES 
 source/ArcticStation.cpp
 source/sensors/PMS7003.cpp
-source/types/StreamWrapper.cpp
+source/types/AirSensorStream.cpp
 )
 
 # Executables goes there
