@@ -15,10 +15,10 @@ Plantower_PMS7003::Plantower_PMS7003()
 
 void Plantower_PMS7003::init()
 {
-  serial->init(BAUD_RATE);
+  serial->init();
 }
 
-void Plantower_PMS7003::init(Stream *s)
+void Plantower_PMS7003::init(AirSensorStream *s)
 {
   dataReady = false;
   serial = s;
@@ -32,7 +32,6 @@ void Plantower_PMS7003::updateFrame()
 {
   if (!initialized)
   {
-    printf("Error: must call Plantower_PMS7003::init()");
     return;
   }
   dataReady = false;
@@ -67,20 +66,6 @@ void Plantower_PMS7003::updateFrame()
       if (isValidChecksum())
       {
         dataReady = true;
-      }
-      else
-      {
-        if (debug)
-        {
-          printf("Invalid data checksum");
-        }
-      }
-    }
-    else
-    {
-      if (debug)
-      {
-        printf("Malformed first byte");
       }
     }
     bufferIndex = 0;
@@ -158,10 +143,8 @@ void Plantower_PMS7003::dumpBytes()
     char buffer[2];
     buffer[0] = sensorData.bytes[i];
     buffer[1] = '\0'; // Null-terminate the string
-    printf(buffer);
-    printf(" ");
+    // TODO: add logic to forward this data somewhere idk for now
   }
-  printf("\n");
 }
 
 // fix sensor data endianness
