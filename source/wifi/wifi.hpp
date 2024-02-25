@@ -7,9 +7,6 @@
 #include <array>
 #include <stdint.h>
 
-// custom libraries
-#include "lwipopts.h"
-
 /**
  * @brief Class for managing Wi-Fi functionality.
  */

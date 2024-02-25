@@ -1,6 +1,11 @@
 # ArcticStation
 
-RPI pico WH based project
+RPI pico W Based station for measuring weather
+
+Functionalities:
+
+- cyw43 WiFi connectivity (working)
+- C++ library for PMS7003 sensor
 
 # Move files from WSL to Windows
 

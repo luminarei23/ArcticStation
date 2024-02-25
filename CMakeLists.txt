@@ -17,12 +17,14 @@ project(${PROJECT} C CXX ASM)
 pico_sdk_init()
 
 # Include directories
-include_directories(source/types source/sensors source/wifi)
+include_directories(source/sensors source/types  source/wifi)
 
 set(SOURCES 
-source/ArcticStation.cpp
-source/sensors/PMS7003.cpp
-source/types/AirSensorStream.cpp
+source/arctic_station.cpp
+source/sensors/pms7003.cpp
+source/sensors/aqi_sensor_serial.cpp
+source/types/arctic_station_init.cpp
+source/wifi/wifi.cpp
 )
 
 # Executables goes there

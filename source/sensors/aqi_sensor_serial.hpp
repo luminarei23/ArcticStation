@@ -1,5 +1,5 @@
-#ifndef _AQISENSORSERIAL_HPP_
-#define _AQISENSORSERIAL_HPP_
+#ifndef AQISENSORSERIAL_HPP
+#define AQISENSORSERIAL_HPP
 
 // Standard libraries
 #include <stdint.h>
@@ -74,4 +74,4 @@ public:
     void unreset();
 };
 
-#endif
+#endif // AQISENSORSERIAL_HPP
