@@ -3,8 +3,7 @@ An C++ library for interfacing with the Plantower PMS7003 laser
 particle counter. This should also work the the PMS5003 sensor,
 as they share the same protocol.
 **********************************************************************/
-
-#include "PMS7003.hpp"
+#include "pms7003.hpp"
 
 Plantower_PMS7003::Plantower_PMS7003()
 {

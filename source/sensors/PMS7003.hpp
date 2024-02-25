@@ -7,10 +7,13 @@
 #ifndef _PMS7003_HPP_
 #define _PMS7003_HPP_
 
+// Standard libraries
 #include <stdint.h>
 
-#include "AirSensorStream.hpp"
+// Custom libraries
+#include "aqi_sensor_serial.hpp"
 
+// Pico SDK libraries
 #include "hardware/uart.h"
 
 #include "pico/cyw43_arch.h"
