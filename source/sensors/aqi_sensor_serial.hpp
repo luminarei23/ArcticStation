@@ -1,24 +1,25 @@
-#ifndef _AIRSENSORSTREAM_HPP_
-#define _AIRSENSORSTREAM_HPP_
+#ifndef AQISENSORSERIAL_HPP
+#define AQISENSORSERIAL_HPP
 
-#include <cstdint>
+// Standard libraries
+#include <stdint.h>
 
+// Pico SDK libraries
 #include "hardware/uart.h"
-#include "pico.h"
 
 #define BAUD_RATE 9600
-#define UART_ID uart0
+#define UART_ID uart1
 #define DATA_BITS 8
 #define STOP_BITS 1
 #define PARITY UART_PARITY_NONE
 
 // pins 0 and 1 from PICO W documentation
-#define UART_TX_PIN 0
-#define UART_RX_PIN 1
+#define UART_TX_PIN 5
+#define UART_RX_PIN 6
 
 /**
  * @brief A class representing a UART stream for communication.
- * The purpose is to have data read and written on uart 0 instance (PIN 0 and PIN 1)
+ * The purpose is to have data read and written on uart 1 instance (PIN 6 and PIN 7)
  * of RPI Pico (for now uart0 is occupied by picoprobe /dev/ttyACM0) PMS7003 Will be
  * occupying this UART instance
  */
@@ -73,4 +74,4 @@ public:
     void unreset();
 };
 
-#endif
+#endif // AQISENSORSERIAL_HPP

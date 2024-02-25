@@ -4,13 +4,16 @@
  * as they share the same protocol.
  *********************************************************************/
 
-#ifndef _PMS7003_HPP_
-#define _PMS7003_HPP_
+#ifndef PMS7003_HPP
+#define PMS7003_HPP
 
+// Standard libraries
 #include <stdint.h>
 
-#include "AirSensorStream.hpp"
+// Custom libraries
+#include "aqi_sensor_serial.hpp"
 
+// Pico SDK libraries
 #include "hardware/uart.h"
 
 #include "pico/cyw43_arch.h"
@@ -61,7 +64,7 @@ typedef union pms7003_data
 /**
  * \brief Class for interfacing with the Plantower PMS7003 sensor.
  */
-class Plantower_PMS7003
+class PMS7003
 {
 public:
   bool debug; /**< Debug flag */
@@ -69,7 +72,7 @@ public:
   /**
    * \brief Default constructor.
    */
-  Plantower_PMS7003();
+  PMS7003();
 
   /**
    * \brief Initialize the UART.
@@ -229,4 +232,4 @@ private:
   uint16_t uint16FromBufferData(unsigned char *buff, int loc);
 };
 
-#endif /* _PMS7003_HPP_ */
+#endif // AQISENSORSERIAL_HPP

@@ -1,10 +1,10 @@
-#include "AirSensorStream.hpp"
+#include "aqi_sensor_serial.hpp"
 
-#include "hardware/uart.h"
-#include "hardware/irq.h"
-
+// Pico SDK libraries
 #include "hardware/resets.h"
+#include "hardware/uart.h"
 
+#include "pico/cyw43_arch.h"
 #include "pico/stdlib.h"
 
 void AirSensorStream::init()
@@ -19,6 +19,8 @@ void AirSensorStream::init()
 
     // Set our data format
     uart_set_format(UART_ID, DATA_BITS, STOP_BITS, PARITY);
+
+    printf("uart1 Enabled? %d\n", uart_is_enabled(uart1));
 }
 
 bool AirSensorStream::isBusy()
