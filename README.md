@@ -39,3 +39,9 @@ in second terminal open GDB and start debugging:
 # Using minicom for debugging
 
 - sudo minicom -D /dev/ttyACM0 -b 115200
+
+# backend
+
+home assistant serves a purpose of the web dashboard accesed under
+
+- http://192.168.0.45:8123/lovelace/0
